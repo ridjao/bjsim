@@ -19,7 +19,7 @@ Player::Player(std::string name, Strategy *pStrategy)
 	pairs = 0;
 }
 
-void Player::receive(int hand, Card& card)
+void Player::receive(int hand, const Card& card)
 {
 	if (hand >= number_of_hands)
 	{
@@ -84,7 +84,7 @@ void Player::double_bet(int hand)
 void Player::split(int hand)
 {
 	/* to do: if not pair throw exception */
-	Card card = hands[hand].sub();		
+	Card card = hands[hand].sub();
 
 	Hand new_hand;
 	new_hand.add(card);

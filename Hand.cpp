@@ -1,8 +1,9 @@
 #include "Hand.h"
+#include <stdexcept>
 
 Hand::Hand():soft(false), total(0), bet(0), doubled(false){}
 
-void Hand::add(Card& card)
+void Hand::add(const Card& card)
 {
 	if (total == -1)
 	{
@@ -11,20 +12,20 @@ void Hand::add(Card& card)
 
 	if ((this->size() == 1) && (this->back().rank() == card.rank()))
 	{
-		pair = true;	
+		pair = true;
 	}
 	else
 	{
 		pair = false;
 	}
 
-	int value = card.value(); 
+	int value = card.value();
 	this->push_back(card);
 	if (value == 11)
 		soft = true;
 
 	total+=value;
-	
+
 	if (total>21)
 	{
 		if (soft)

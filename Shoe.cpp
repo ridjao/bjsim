@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+#include <random>
 #include <exception>
 #include <iostream>
 #include <string>
@@ -20,15 +21,16 @@ void Shoe::load(int decks)
 	for (int i=0; i<decks; i++)
 	{
 		for (int j=0; j<n; j++)
-		{			
-			cards.push_back(Deck::cards[j]);			
+		{
+			cards.push_back(Deck::cards[j]);
 		}
 	}
 }
 
 void Shoe::shuffle()
-{	
-	std::random_shuffle(cards.begin(), cards.end());
+{
+	std::shuffle(cards.begin(), cards.end(),
+	std::default_random_engine(std::random_device{}()));
 }
 
 Card Shoe::deal()
@@ -65,7 +67,7 @@ void Shoe::print()
 	}
 }
 
-int Shoe::count(const std::vector<Card>& cards)
+int Shoe::count(const std::vector<Card>& /*cards*/)
 {
 	return 0;
 }
@@ -121,8 +123,8 @@ void CSM::load(int decks)
 		for (int i=0; i<decks; i++)
 		{
 			for (int j=0; j<n; j++)
-			{		
-				cards.push_back(Deck::cards[j]);					
+			{
+				cards.push_back(Deck::cards[j]);
 			}
 		}
 

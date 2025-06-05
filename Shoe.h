@@ -25,7 +25,7 @@ class CSM: public Shoe
 public:
 	Card deal();
 	Card deal(const Card& card);
-	void CSM::load(int decks);
+	void load(int decks);
 	void print();
 	int count(const std::vector<Card>& cards = std::vector<Card>());
 

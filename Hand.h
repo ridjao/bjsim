@@ -9,7 +9,7 @@ class Hand: public std::vector<Card>
 {
 public:
 	Hand();
-	void add(Card& card);
+	void add(const Card& card);
 	Card sub();
 	void set_bet(double bet);
 	double get_bet();

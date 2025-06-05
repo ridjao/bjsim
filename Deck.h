@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 
 #ifndef DECK_H
 #define DECK_H
