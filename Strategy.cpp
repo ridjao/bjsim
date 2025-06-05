@@ -7,7 +7,7 @@ InteractiveStrategy interactive;
 ConservativeStrategy conservative;
 AdvancedStrategy advanced;
 
-double Strategy::compute_bet(int count)
+double Strategy::compute_bet(int /*count*/)
 {
 	return 1.0;
 }
@@ -37,7 +37,7 @@ char BasicStrategy::get_action(int player_total, int dealer_total, bool soft, bo
 				return 's';
 			return 'p';
 		}
-		
+
 		//88
 		if (player_total == 16)
 		{
@@ -47,14 +47,14 @@ char BasicStrategy::get_action(int player_total, int dealer_total, bool soft, bo
 			if (dealer_total >= 9)
 				return 'r';
 			return 'p';
-		}			
+		}
 
 		//77
 		if (player_total == 14 && dealer_total == 10)
 			return 'r';
 
 		//77, 33, 22
-		if (player_total == 14 || player_total == 6 || player_total == 4) 
+		if (player_total == 14 || player_total == 6 || player_total == 4)
 		{
 			if (dealer_total >= 8)
 				return 'h';
@@ -72,18 +72,18 @@ char BasicStrategy::get_action(int player_total, int dealer_total, bool soft, bo
 		//55
 		if (player_total == 10)
 		{
-			if (player_total > dealer_total) 
+			if (player_total > dealer_total)
 				return 'd';
 			return 'h';
 		}
 
 		//44
-		if (player_total == 8) 
+		if (player_total == 8)
 		{
 			if (dealer_total == 5 || dealer_total == 6)
 				return 'p';
 			return 'h';
-		}	
+		}
 	}
 	else if (!soft)
 	{
@@ -116,7 +116,7 @@ char BasicStrategy::get_action(int player_total, int dealer_total, bool soft, bo
 		{
 			if (player_total >= 13)
 				return 's';
-			
+
 			if (player_total == 12 && dealer_total >= 4)
 				return 's';
 
@@ -162,7 +162,7 @@ char BasicStrategy::get_action(int player_total, int dealer_total, bool soft, bo
 			if (player_total < 18)
 				return 'h';
 		}
-		else 
+		else
 		{
 			if (dealer_total >= 5) /* 5 and 6 */
 			{
@@ -211,7 +211,8 @@ char BasicStrategy::get_action(int player_total, int dealer_total, bool soft, bo
 	return 'x';
 }
 
-char InteractiveStrategy::get_action(int player_total, int dealer_total, bool soft, bool pair, int cards)
+char InteractiveStrategy::get_action(int /*player_total*/, int /*dealer_total*/,
+	bool /*soft*/, bool /*pair*/, int /*cards*/)
 {
 	char action;
 	std::cin>>action;
@@ -244,7 +245,7 @@ char ConservativeStrategy::get_action(int player_total, int dealer_total, bool s
 				return 's';
 			return 's';
 		}
-		
+
 		//88
 		if (player_total == 16)
 		{
@@ -254,14 +255,14 @@ char ConservativeStrategy::get_action(int player_total, int dealer_total, bool s
 			if (dealer_total >= 9)
 				return 'r';
 			return 'p';
-		}			
+		}
 
 		//77
 		if (player_total == 14 && dealer_total == 10)
 			return 'r';
 
 		//77, 33, 22
-		if (player_total == 14 || player_total == 6 || player_total == 4) 
+		if (player_total == 14 || player_total == 6 || player_total == 4)
 		{
 			if (dealer_total >= 8)
 				return 'h';
@@ -279,18 +280,18 @@ char ConservativeStrategy::get_action(int player_total, int dealer_total, bool s
 		//55
 		if (player_total == 10)
 		{
-			if (player_total > dealer_total) 
+			if (player_total > dealer_total)
 				return 'd';
 			return 'h';
 		}
 
 		//44
-		if (player_total == 8) 
+		if (player_total == 8)
 		{
 			if (dealer_total == 5 || dealer_total == 6)
 				return 'p';
 			return 'h';
-		}	
+		}
 	}
 	else if (!soft)
 	{
@@ -332,7 +333,7 @@ char ConservativeStrategy::get_action(int player_total, int dealer_total, bool s
 		{
 			if (player_total >= 13)
 				return 's';
-			
+
 			if (player_total == 12 && dealer_total >= 4)
 				return 's';
 
@@ -380,7 +381,7 @@ char ConservativeStrategy::get_action(int player_total, int dealer_total, bool s
 			if (player_total < 18)
 				return 'h';
 		}
-		else 
+		else
 		{
 			if (dealer_total >= 5) /* 5 and 6 */
 			{
@@ -454,7 +455,7 @@ char AdvancedStrategy::get_action(int player_total, int dealer_total, bool soft,
 				return 's';
 			return 'p';
 		}
-		
+
 		//88
 		if (player_total == 16)
 		{
@@ -464,14 +465,14 @@ char AdvancedStrategy::get_action(int player_total, int dealer_total, bool soft,
 			if (dealer_total >= 9)
 				return 'r';
 			return 'p';
-		}			
+		}
 
 		//77
 		if (player_total == 14 && dealer_total == 10)
 			return 'r';
 
 		//77, 33, 22
-		if (player_total == 14 || player_total == 6 || player_total == 4) 
+		if (player_total == 14 || player_total == 6 || player_total == 4)
 		{
 			if (dealer_total >= 8)
 				return 'h';
@@ -489,18 +490,18 @@ char AdvancedStrategy::get_action(int player_total, int dealer_total, bool soft,
 		//55
 		if (player_total == 10)
 		{
-			if (player_total > dealer_total) 
+			if (player_total > dealer_total)
 				return 'd';
 			return 'h';
 		}
 
 		//44
-		if (player_total == 8) 
+		if (player_total == 8)
 		{
 			if (dealer_total == 5 || dealer_total == 6)
 				return 'p';
 			return 'h';
-		}	
+		}
 	}
 	else if (!soft)
 	{
@@ -533,7 +534,7 @@ char AdvancedStrategy::get_action(int player_total, int dealer_total, bool soft,
 		{
 			if (player_total >= 13)
 				return 's';
-			
+
 			if (player_total == 12 && dealer_total >= 4)
 				return 's';
 
@@ -579,7 +580,7 @@ char AdvancedStrategy::get_action(int player_total, int dealer_total, bool soft,
 			if (player_total < 18)
 				return 'h';
 		}
-		else 
+		else
 		{
 			if (dealer_total >= 5) /* 5 and 6 */
 			{

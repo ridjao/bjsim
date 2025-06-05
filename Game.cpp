@@ -9,8 +9,8 @@ Game::Game(int players):dealer("Dealer ")
 	{
 		char id[2]={0};
 		id[0]='0'+i+1;
-		std::string name = "Player"; 
-		name+=id; 
+		std::string name = "Player";
+		name+=id;
 		this->players.push_back(Player(name, &basic));
 	}
 
@@ -40,7 +40,7 @@ void Game::deal(int count)
 	{
 		player_card1 = pParams->player_card1;
 		player_card2 = pParams->player_card2;
-		dealer_card1 = pParams->dealer_card1;		
+		dealer_card1 = pParams->dealer_card1;
 		decks = pParams->decks;
 	}
 
@@ -94,19 +94,19 @@ void Game::play()
 	bool splitting_aces = false;
 
 	for (std::vector<Player>::iterator player = players.begin(); player != players.end(); ++player)
-	{	
+	{
 		splitting_aces = false;
 		splits = 0;
 		for (int i=0; i<player->get_number_of_hands(); i++)
 		{
 			//second card for split hands
-			if (i > 0) 
-			{			
-				player->receive(i, shoe.deal()); 
+			if (i > 0)
+			{
+				player->receive(i, shoe.deal());
 
 				if (splitting_aces) break;
 
-				if (is_show_mode()) 
+				if (is_show_mode())
 				{
 					std::cout<<std::endl;
 					player->show_hand(i);
@@ -115,19 +115,19 @@ void Game::play()
 
 			//blackjack
 			if ((player->total(i)) == 21)
-			{		
+			{
 				break;
-			} 
+			}
 
 			//at least one non-black jack hand
 			all_bjs = false;
 
-			if (is_show_mode()) 
+			if (is_show_mode())
 			{
 				std::cout<<player->get_name()<<" on hand"<<i+1<<": hit/stand? ";
 			}
 
-			//std::cin>>action; 
+			//std::cin>>action;
 			action = player->get_action(i, dealer.total(0));
 
 			if (is_show_mode())
@@ -142,15 +142,15 @@ void Game::play()
 			}
 			else
 			{
-				while (action != 's')	
+				while (action != 's')
 				{
 					if (action == 'p' && splits < 2)
 					{
 						player->split(i);
-						++splits;			
+						++splits;
 					}
-					
-					if (action == 'd') 
+
+					if (action == 'd')
 						player->double_bet(i);
 
 					if (action == 'p' && player->total(i) == 11)
@@ -160,13 +160,13 @@ void Game::play()
 
 					player->receive(i, shoe.deal());
 
-					if (action == 'd' || splitting_aces || player->total(i) == -1 || player->total(i) == 21) 
+					if (action == 'd' || splitting_aces || player->total(i) == -1 || player->total(i) == 21)
 						break;
 
 					if (is_show_mode())
 					{
 						player->show_hand(i);
-						std::cout<<player->get_name()<<" on "<<i+1<<": hit/stand? ";					
+						std::cout<<player->get_name()<<" on "<<i+1<<": hit/stand? ";
 					}
 
 					//std::cin >> action;
@@ -185,7 +185,7 @@ void Game::play()
 			//at least one hand was not busted
 			if (player->total(i) != -1)
 			{
-				 all_busts = false;
+				all_busts = false;
 			}
 		}
 	}
@@ -197,7 +197,7 @@ void Game::play()
 	{
 		while (dealer.total(0) < 17 && dealer.total(0) != -1)
 		{
-			dealer.receive(0,shoe.deal(dealer_card2));			
+			dealer.receive(0,shoe.deal(dealer_card2));
 			if (is_show_mode()) dealer.show_hand(0);
 		}
 	}
@@ -209,7 +209,7 @@ void Game::pay()
 	int dealer_total = dealer.total(0);
 
 	for (std::vector<Player>::iterator player = players.begin(); player != players.end(); ++player)
-	{				
+	{
 		for (int i=0; i<player->get_number_of_hands(); i++)
 		{
 			if (is_show_mode()) player->show_hand(i);
@@ -261,7 +261,7 @@ bool Game::is_show_mode()
 
 void Game::set_show_mode(bool show_mode)
 {
-	this->show_mode = show_mode; 
+	this->show_mode = show_mode;
 }
 
 void Game::run(int times)
@@ -277,7 +277,7 @@ void Game::run(int times)
 	{
 		deal(count);
 		play();
-		pay();		
+		pay();
 
 		if (is_show_mode())
 		{
@@ -288,7 +288,7 @@ void Game::run(int times)
 		else
 		{
 			last_progress = progress;
-			progress = int((double(i)/times)*1000);					
+			progress = int((double(i)/times)*1000);
 			if (progress > last_progress && progress%10 == 0)
 				std::cout<<".";
 		}

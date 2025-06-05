@@ -38,10 +38,10 @@ void Deck::initialize()
 	std::string ranks[] = {"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
 	std::string suits[] = {"C", "S", "H", "D"};
 
-	for (int i=0; i<sizeof(suits)/sizeof(suits[0]); i++)
+	for (size_t i = 0; i < sizeof(suits) / sizeof(suits[0]); ++i)
 	{
-		for(int j=0; j<sizeof(ranks)/sizeof(ranks[0]); j++)
-		{	
+		for (size_t j = 0; j < sizeof(ranks) / sizeof(ranks[0]); ++j)
+		{
 			std::string card = ranks[j]+suits[i];
 			Deck::cards.push_back(card);
 		}

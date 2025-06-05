@@ -11,7 +11,7 @@ class Player
 {
 public:
 	Player(std::string name="", Strategy* pStrategy = NULL);
-	void receive(int hand, Card& card);
+	void receive(int hand, const Card& card);
 	int total(int hand);
 	void show_hand(int hand);
 	void set_bet(int hand, double bet);

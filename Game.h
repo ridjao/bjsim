@@ -22,12 +22,12 @@ class Game
 {
 public:
 	Game(int players);
-	Game::Game(std::vector<Player> players, Parameters* pParams = NULL);
+	Game(std::vector<Player> players, Parameters* pParams = NULL);
 	void run(int times = 1000000);
 
 	void deal(int count = 0);
-	void play(); 
-	void pay();  
+	void play();
+	void pay();
 
 	bool is_show_mode();
 	void set_show_mode(bool show_mode);
@@ -37,7 +37,7 @@ private:
 	Dealer dealer;
 	bool show_mode;
 	time_t elapsed;
-	
+
 	Shoe shoe;
 	Parameters* pParams;
 
